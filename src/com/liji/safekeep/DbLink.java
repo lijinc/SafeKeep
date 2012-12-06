@@ -113,8 +113,6 @@ public class DbLink {
 			  while (rs.next())
 			  {
 					pwd=rs.getString("password");
-					System.out.println(pwd);
-
 			  }
 			  System.out.println("Debug:Search sucessful");
 		}
@@ -140,6 +138,66 @@ public class DbLink {
 		}
 		
 	}
+	public String allPassword(int sno)
+	{
+		String pwd="error no password found";
+		try
+		{	  //tries to search for pwd given sno
+			  PreparedStatement prest = conn.prepareStatement("select password from encdata.enctable where sno =?");
+			  prest.setInt(1, sno);
+			  ResultSet rs = prest.executeQuery();
+			  while (rs.next())
+			  {
+					pwd=rs.getString("password");
+			  }
+			  System.out.println("Debug:Search sucessful");
+		}
+		catch (SQLException s)
+		{
+			  System.out.println("Debug:unable to search");
+		}
+		return pwd;
+	}
+	public String allUserName(int sno)
+	{
+		String pwd="error no username";
+		try
+		{	  //tries to search for uname given sno
+			  PreparedStatement prest = conn.prepareStatement("select username from encdata.enctable where sno =?");
+			  prest.setInt(1, sno);
+			  ResultSet rs = prest.executeQuery();
+			  while (rs.next())
+			  {
+					pwd=rs.getString("username");
+			  }
+			  System.out.println("Debug:Search sucessful");
+		}
+		catch (SQLException s)
+		{
+			  System.out.println("Debug:unable to search");
+		}
+		return pwd;
+	}
+	public String allSiteName(int sno)
+	{
+		String pwd="error no sitename";
+		try
+		{	  //tries to search for sname given sno
+			  PreparedStatement prest = conn.prepareStatement("select sitename from encdata.enctable where sno =?");
+			  prest.setInt(1, sno);
+			  ResultSet rs = prest.executeQuery();
+			  while (rs.next())
+			  {
+					pwd=rs.getString("sitename");
+			  }
+			  System.out.println("Debug:Search sucessful");
+		}
+		catch (SQLException s)
+		{
+			  System.out.println("Debug:unable to search");
+		}
+		return pwd;
+	}
 	public void updateRecord(String sName,String uName,String nPassword)
 	{
 		try
@@ -154,6 +212,36 @@ public class DbLink {
 		catch(SQLException s)
 		{
 			System.out.println("Debug:Failed to modify Data");
+		}
+	}
+	public int countRec()
+	{int reccount = 0;
+		try
+		{
+			  //tries to count 
+			  Statement st = conn.createStatement();
+			  ResultSet res = st.executeQuery("SELECT MAX(sno) FROM encdata.enctable");
+			  while (res.next())
+			  {
+				  reccount = res.getInt(1);
+			  }
+		}
+		catch (SQLException s)
+		{
+			  System.out.println("Debug:unable to count");
+		}
+		return reccount;
+	}
+	public void closeConnection()
+	{
+		try
+		{
+			conn.close();
+			System.out.println("Debug:Disconnected from database");	
+		}
+		catch(Exception e)
+		{
+			System.out.println("Debug:Unable to disconnect");	
 		}
 	}
 }	  

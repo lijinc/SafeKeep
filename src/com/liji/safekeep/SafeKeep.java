@@ -11,15 +11,13 @@ public class SafeKeep {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		/*EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {
 		      public void run() {
-		      SafeFrame mainframe=new SafeFrame();
+		      SafeMainFrame mainframe=new SafeMainFrame();
 		      mainframe.setVisible(true);
 		      mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		      }
-		});*/
-		DbLink db=new DbLink(); 
-		db.addRecord("www.yahoo.com", "lijyahoo", "pwd");
+		});
 	}
 
 }
