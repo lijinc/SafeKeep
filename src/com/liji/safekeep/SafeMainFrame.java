@@ -68,6 +68,7 @@ public class SafeMainFrame extends JFrame {
 	    		else
 	    		{
 	    			JOptionPane.showMessageDialog(null, "Invalid Password!","Error",2);
+	    			passwordField.setText("");
 	    		}
 	    	}
 	    });

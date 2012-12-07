@@ -92,11 +92,17 @@ public class ChangePwdFrame extends JFrame {
 	    				else
 	    				{
 	    					JOptionPane.showMessageDialog(null, "Can't Confirm New Password!","Error",2);
+	    					currentPassword.setText("");
+	    					newPassword.setText("");
+	    					confirmPassword.setText("");
 	    				}
 	    			}
 	    			else
 	    			{
 	    				JOptionPane.showMessageDialog(null, "Wrong Current Password!","Error",2);
+	    				currentPassword.setText("");
+    					newPassword.setText("");
+    					confirmPassword.setText("");
 	    			}
 	    		}
 	    	}
