@@ -105,5 +105,5 @@ public class SafeIndexFrame extends JFrame {
 		    	}
 		    });
 	}
-
+	
 }

@@ -25,7 +25,7 @@ public class RemovePwdFrame extends JFrame {
 		setResizable(false);
 		setTitle("SafeKeep");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 245, 157);
+		setBounds(100, 100, 245, 187);
 		mainPane = new JPanel();
 		mainPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(mainPane);
@@ -66,6 +66,21 @@ public class RemovePwdFrame extends JFrame {
 		mainPane.add(txtUser);
 		txtUser.setColumns(10);
 		mainPane.add(btnDeletePassword);
+		
+		JButton btnGoBack = new JButton("Go Back!");
+		btnGoBack.setBounds(5, 130, 237, 26);
+		mainPane.add(btnGoBack);
+		btnGoBack.addActionListener(new ActionListener()
+	    {
+	    	public void actionPerformed(ActionEvent eve)
+	    	{	
+	    		setVisible(false);
+	    		db.closeConnection();
+	    		SafeIndexFrame sif=new SafeIndexFrame();
+	    		sif.setVisible(true);
+	    		
+	    	}
+	    });
 		
 	}
 

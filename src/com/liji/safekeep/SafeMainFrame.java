@@ -55,6 +55,7 @@ public class SafeMainFrame extends JFrame {
 	    				db.closeConnection();
 	    				ChangePwdFrame npwd=new ChangePwdFrame("root","app");
 	    				npwd.setVisible(true);
+	    				npwd.bakDisable();
 	    			}
 	    			else
 	    			{

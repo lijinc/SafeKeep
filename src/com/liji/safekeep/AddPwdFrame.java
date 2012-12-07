@@ -24,13 +24,14 @@ public class AddPwdFrame extends JFrame {
 	private JPasswordField passwordField;
 	private JLabel lblUser;
 	private JLabel lblPassword;
+	private JButton btnGoBack;
 	public AddPwdFrame()
 	{	
 		db=new DbLink();
 		setResizable(false);
 		setTitle("SafeKeep");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 227, 213);
+		setBounds(100, 100, 227, 225);
 		mainPane = new JPanel();
 		mainPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(mainPane);
@@ -51,7 +52,7 @@ public class AddPwdFrame extends JFrame {
 		mainPane.add(passwordField);
 		
 		btnAddPassword = new JButton("Add Password");
-		btnAddPassword.setBounds(5, 140, 217, 37);
+		btnAddPassword.setBounds(5, 140, 217, 26);
 		mainPane.add(btnAddPassword);
 		
 		JLabel lblSiteName = new JLabel("Site Name:");
@@ -66,6 +67,20 @@ public class AddPwdFrame extends JFrame {
 		lblPassword.setBounds(5, 93, 82, 15);
 		mainPane.add(lblPassword);
 		
+		btnGoBack = new JButton("Go Back!");
+		btnGoBack.setBounds(5, 170, 217, 26);
+		mainPane.add(btnGoBack);
+		btnGoBack.addActionListener(new ActionListener()
+	    {
+	    	public void actionPerformed(ActionEvent eve)
+	    	{	
+	    		setVisible(false);
+	    		db.closeConnection();
+	    		SafeIndexFrame sif=new SafeIndexFrame();
+	    		sif.setVisible(true);
+	    		
+	    	}
+	    });
 		btnAddPassword.addActionListener(new ActionListener()
 	    {
 	    	public void actionPerformed(ActionEvent eve)

@@ -25,12 +25,13 @@ public class ChangePwdFrame extends JFrame {
 	private JPasswordField currentPassword;
 	private JPasswordField newPassword;
 	private JPasswordField confirmPassword;
+	private JButton btnGoBack;
 	public ChangePwdFrame(final String sName,final String uName)
 	{	
 		setResizable(false);
 		setTitle("SafeKeep");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 259, 164);
+		setBounds(100, 100, 259, 203);
 		changePwdPane = new JPanel();
 		changePwdPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(changePwdPane);
@@ -101,11 +102,27 @@ public class ChangePwdFrame extends JFrame {
 	    	}
 	    });
 		
-		JLabel label = new JLabel("");
-		label.setBounds(5, 139, 247, 19);
-		changePwdPane.add(label);
+		btnGoBack = new JButton("Go Back!");
+		btnGoBack.setBounds(5, 160, 247, 30);
+		changePwdPane.add(btnGoBack);
+		btnGoBack.addActionListener(new ActionListener()
+	    {
+	    	public void actionPerformed(ActionEvent eve)
+	    	{	
+	    		setVisible(false);
+	    		db.closeConnection();
+	    		SafeIndexFrame sif=new SafeIndexFrame();
+	    		sif.setVisible(true);
+	    		
+	    	}
+	    });
 		db=new DbLink();
 		oldPassword=db.searchPassword(sName, uName);
 	}
-
+	@SuppressWarnings("deprecation")
+	public void bakDisable()
+	{
+		setBounds(100, 100, 259, 180);
+		btnGoBack.setVisible(false);
+	}
 }

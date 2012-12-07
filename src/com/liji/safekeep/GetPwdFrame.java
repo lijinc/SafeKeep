@@ -28,7 +28,7 @@ public class GetPwdFrame extends JFrame {
 		setResizable(false);
 		setTitle("SafeKeep");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 240, 195);
+		setBounds(100, 100, 240, 230);
 		mainPane = new JPanel();
 		mainPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(mainPane);
@@ -69,6 +69,20 @@ public class GetPwdFrame extends JFrame {
 		btnEditPassword.setBounds(5, 163, 228, 26);
 		mainPane.add(btnEditPassword);
 		
+		JButton btnGoBack = new JButton("Go Back!");
+		btnGoBack.setBounds(5, 193, 228, 26);
+		mainPane.add(btnGoBack);
+		btnGoBack.addActionListener(new ActionListener()
+	    {
+	    	public void actionPerformed(ActionEvent eve)
+	    	{	
+	    		setVisible(false);
+	    		db.closeConnection();
+	    		SafeIndexFrame sif=new SafeIndexFrame();
+	    		sif.setVisible(true);
+	    		
+	    	}
+	    });
 		db=new DbLink();
 		
 		btnGetPassword.addActionListener(new ActionListener()
