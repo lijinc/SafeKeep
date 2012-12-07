@@ -39,7 +39,7 @@ public class ShowAllFrame extends JFrame {
 		
 		db=new DbLink();
 		int i=1;
-		for(i=1;i<db.countRec();i++)
+		for(i=1;i<=db.countRec();i++)
 		{
 			if("error no password found".equals(db.allPassword(i)))
 			{
@@ -49,6 +49,7 @@ public class ShowAllFrame extends JFrame {
 					+"\n"+String.valueOf(i)+". \n"+"Site Name : "+db.allSiteName(i)+"\n"+"User Name : "+db.allUserName(i)
 					+"\n"+"Password : "+db.allPassword(i)+"\n";
 		}
+		allPwd=allPwd+"==================================================";
 		db.closeConnection();
 		JTextArea textArea = new JTextArea(allPwd);
 		textArea.setBounds(5, 104, 273, 98);

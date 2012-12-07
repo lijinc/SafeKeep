@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -80,18 +81,19 @@ public class ChangePwdFrame extends JFrame {
 	    				oldPassword=nPwd;
 	    				db.updateRecord(sName, uName, nPwd);
 	    				db.closeConnection();
+	    				JOptionPane.showMessageDialog(null,"New Password Confirmed!","SafeKeep",1);
 	    				setVisible(false);
 	    				SafeIndexFrame sfi=new SafeIndexFrame();
 	    				sfi.setVisible(true);
 	    			}
 	    			else
 	    			{
-	    				System.out.println("Debug:Cannot confirm new Password");
+		    			JOptionPane.showMessageDialog(null, "Can't Confirm New Password!","Error",2);
 	    			}
 	    		}
 	    		else
 	    		{
-	    			System.out.println("Debug:Acces Denied");
+	    			JOptionPane.showMessageDialog(null, "Wrong Current Password!","Error",2);
 	    		}
 	    	}
 	    });

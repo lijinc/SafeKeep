@@ -24,7 +24,7 @@ public class RemovePwdFrame extends JFrame {
 		setResizable(false);
 		setTitle("SafeKeep");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 245, 144);
+		setBounds(100, 100, 245, 157);
 		mainPane = new JPanel();
 		mainPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(mainPane);

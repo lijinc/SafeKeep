@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -65,7 +66,7 @@ public class SafeMainFrame extends JFrame {
 	    		}
 	    		else
 	    		{
-	    			System.out.println("Debug:Acces Denied");
+	    			JOptionPane.showMessageDialog(null, "Invalid Password!","Error",2);
 	    		}
 	    	}
 	    });

@@ -1,6 +1,8 @@
 package com.liji.safekeep;
 import java.sql.*;
 
+import javax.swing.JOptionPane;
+
 public class DbLink {
 	private Connection conn;
 	private String url;
@@ -93,11 +95,11 @@ public class DbLink {
 			  prest.setObject(4,uName);
 			  prest.setObject(5,pwd);
 			  int n = prest.executeUpdate();
-			  System.out.println("Debug:Data insertion succesfull");
+			  JOptionPane.showMessageDialog(null, "Sucessfully added Password!");
 		}
 		catch (SQLException s)
 		{
-			  System.out.println("Debug:Data insertion failed(Duplicate value)");
+			  JOptionPane.showMessageDialog(null, "Can't Insert Duplicate Value!","Error.!!",2);
 		}
 	}
 	
@@ -130,11 +132,19 @@ public class DbLink {
 			PreparedStatement prest = conn.prepareStatement("delete from encdata.enctable where id like ?");
 			prest.setObject(1,sqlquerry);
 			int n = prest.executeUpdate();
-			System.out.println("Debug:Data deletion succesful");
+			if(n==1)
+			{
+				JOptionPane.showMessageDialog(null, "Record Deleted Sucessfully!","Deletion",1);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Can't Delete : No Such Record","Error",2);
+
+			}
 		}	
 		catch(SQLException s)
 		{
-			System.out.println("Debug:Failed to delete data");
+			s.printStackTrace();
 		}
 		
 	}

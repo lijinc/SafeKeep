@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -73,8 +74,7 @@ public class AddPwdFrame extends JFrame {
 	    		String uName=new String(txtUser.getText());
 	    		String pwd=new String(passwordField.getPassword());
 	    		db.addRecord(sName, uName, pwd);
-	    		System.out.println("Debug:Password added");
-	    		db.closeConnection();
+				db.closeConnection();
 	    		setVisible(false);
 	    		SafeIndexFrame sf=new SafeIndexFrame();
 	    		sf.setVisible(true);
