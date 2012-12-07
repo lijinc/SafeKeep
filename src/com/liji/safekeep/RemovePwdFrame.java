@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -49,11 +50,14 @@ public class RemovePwdFrame extends JFrame {
 	    {
 	    	public void actionPerformed(ActionEvent eve)
 	    	{	
-	    		db.deleteRecord(txtSite.getText(),txtUser.getText());
-	    		setVisible(false);
-	    		db.closeConnection();
-	    		SafeIndexFrame si=new SafeIndexFrame();
-	    		si.setVisible(true);
+	    		if(JOptionPane.showConfirmDialog(null, "Are you Sure You Wanna Delete Record?","Delete",JOptionPane.YES_NO_OPTION)==0)
+	    		{
+	    			db.deleteRecord(txtSite.getText(),txtUser.getText());
+	    			setVisible(false);
+	    			db.closeConnection();
+	    			SafeIndexFrame si=new SafeIndexFrame();
+	    			si.setVisible(true);
+	    		}
 	    	}
 	    });
 		

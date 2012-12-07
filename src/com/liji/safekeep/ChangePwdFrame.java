@@ -69,31 +69,34 @@ public class ChangePwdFrame extends JFrame {
 	    {
 	    	public void actionPerformed(ActionEvent eveUpdate)
 	    	{	
-	    		String currPwd=new String(currentPassword.getPassword());
-	    		if(currPwd.equals(oldPassword))
+	    		if(JOptionPane.showConfirmDialog(null, "Are You Sure You Wanna Change Password?","Change Password",JOptionPane.YES_NO_OPTION)==0)
 	    		{
-	    			System.out.println("Debug:current pass = old pass allowed to change pwd ");
-	    			String nPwd=new String(newPassword.getPassword());
-	    			String cPwd=new String(confirmPassword.getPassword());
-	    			if(nPwd.equals(cPwd))
+	    			String currPwd=new String(currentPassword.getPassword());
+	    			if(currPwd.equals(oldPassword))
 	    			{
-	    				System.out.println("Debug:New password confirmed");
-	    				oldPassword=nPwd;
-	    				db.updateRecord(sName, uName, nPwd);
-	    				db.closeConnection();
-	    				JOptionPane.showMessageDialog(null,"New Password Confirmed!","SafeKeep",1);
-	    				setVisible(false);
-	    				SafeIndexFrame sfi=new SafeIndexFrame();
-	    				sfi.setVisible(true);
+	    				System.out.println("Debug:current pass = old pass allowed to change pwd ");
+	    				String nPwd=new String(newPassword.getPassword());
+	    				String cPwd=new String(confirmPassword.getPassword());
+	    				if(nPwd.equals(cPwd))
+	    				{
+	    					System.out.println("Debug:New password confirmed");
+	    					oldPassword=nPwd;
+	    					db.updateRecord(sName, uName, nPwd);
+	    					db.closeConnection();
+	    					JOptionPane.showMessageDialog(null,"New Password Confirmed!","SafeKeep",1);
+	    					setVisible(false);
+	    					SafeIndexFrame sfi=new SafeIndexFrame();
+	    					sfi.setVisible(true);
+	    				}
+	    				else
+	    				{
+	    					JOptionPane.showMessageDialog(null, "Can't Confirm New Password!","Error",2);
+	    				}
 	    			}
 	    			else
 	    			{
-		    			JOptionPane.showMessageDialog(null, "Can't Confirm New Password!","Error",2);
+	    				JOptionPane.showMessageDialog(null, "Wrong Current Password!","Error",2);
 	    			}
-	    		}
-	    		else
-	    		{
-	    			JOptionPane.showMessageDialog(null, "Wrong Current Password!","Error",2);
 	    		}
 	    	}
 	    });
